@@ -1,0 +1,34 @@
+pipeline:
+  name: DockerJSApp
+  identifier: DockerJSApp
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Docker
+        build: <+input>
+  stages:
+    - stage:
+        name: jsapp image build
+        identifier: jsapp_image_build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build app image
+                  identifier: Build_app_image
+                  spec:
+                    shell: Powershell
+                    command: docker build -t .\
+          platform:
+            os: Windows
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
