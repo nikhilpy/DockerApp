@@ -45,3 +45,4 @@ networks:
   mongo_network:
     name: mongo-network
     external: true
+    
